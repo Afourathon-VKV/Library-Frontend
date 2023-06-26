@@ -1,4 +1,4 @@
-import { Design } from "./Login/Design";
+import { Design } from "./Common/Design";
 import { SignIn } from "./Login/SignIn";
 
 export default function Login(){
