@@ -4,11 +4,11 @@ import { Link } from "react-router-dom"
 export const AdLibHeader=()=>{
     return (
         <div>
-            <div className="flex pt-8 px-12 text-white">
+            <div className="flex pt-8 px-6 lg:px-12 text-white">
                 <div className="flex-auto font-bold text-xl">
                     Your Logo
                 </div>
-                <div className=" pr-[20%] hidden lg:flex">
+                <div className=" pr-[28%] xl:pr-[19%] 2xl:pr-[16%] hidden lg:flex">
                     <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
                 </div>
                 <div className="flex text-xl">
@@ -19,7 +19,7 @@ export const AdLibHeader=()=>{
             <div className="lg:hidden">
                 <img src="/images/Pic2.png" className="object-contain flex mx-auto my-4"></img>
                 <div className="mb-6 mt-10 flex">
-                    <div className="flex-auto px-12">
+                    <div className="flex-auto px-6">
                         <Link to={`/addlibrarian`}>
                             <Button className="bg-[#F9D745] rounded-2xl px-8 text-black">Add</Button>
                         </Link>
