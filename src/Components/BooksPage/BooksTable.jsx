@@ -1,9 +1,9 @@
 import { useState,useEffect } from "react"
-export const StudentBooksTable=()=>{
-    const [students, setStudents]=useState([{},{},{}])
+export const BooksTable=()=>{
+    const [books, setBooks]=useState([{},{},{}])
     return (
         <div className="lg:col-span-2 xl:col-span-3 2xl:col-span-4 px-6">
-            <div className="flex  text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">Books List</div>
+            <div className="text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">Books List</div>
             
             <div className="w-full">
                 <div className="grid grid-cols-12 lg:mx-0 mx-4">
@@ -17,15 +17,15 @@ export const StudentBooksTable=()=>{
                         Author
                     </div>
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-2 ">
-                        Code
+                        Description
                     </div>
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-3">
-                        Description
+                        Code
                     </div>
                     
                 </div>
 
-                {students.map((lib)=>(
+                {books.map((lib)=>(
                     <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
                         <div className="text-center pl-2 items-center h-full hidden lg:flex text-[10px] md:text-sm text-black  lg:col-span-2 xl:col-span-1">
                             <img src="/images/BookElement.png" className="h-4/5 scale-90"></img>

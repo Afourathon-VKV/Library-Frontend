@@ -42,8 +42,9 @@ export const StudentTable=()=>{
                         <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-4 col-span-3 break-all pr-3">
                         1234567305477760
                         </div>
-                        <div className="col-span-2 md:col-span-1 flex justify-end pr-8">
-                            <img src="/images/trash.png" className="contain my-auto"></img>
+                        <div className="col-span-2 lg:col-span-1  flex justify-end xl:pr-8 pr-4">
+                            <img src="/images/Pen.png" className="contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75 "></img>
+                            <img src="/images/trash.png" className="contain my-auto md:scale-100 scale-75"></img>
                         </div>
                 </div>
                 ))}

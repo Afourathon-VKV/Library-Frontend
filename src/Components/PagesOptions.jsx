@@ -1,7 +1,8 @@
 import React from 'react'
+import {useNavigate} from "react-router-dom"
 
 export default function PagesOptions() {
-    
+    const navigate = useNavigate();
     return (
         <div className='min-h-[100vh] bg-blue-550 pb-8'>
             
@@ -27,7 +28,9 @@ export default function PagesOptions() {
                         Manage books for a selected Student from a list of all students.
                     </div>
                     <div className='mt-6'>
-                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg'>Go There!</button>
+                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg' onClick={()=>{
+                            navigate("/students");
+                        }}>Go There!</button>
                     </div>
                 </div>
 
@@ -40,7 +43,9 @@ export default function PagesOptions() {
                         Manage Students for a selected Book from a list of all Books.
                     </div>
                     <div className='mt-6'>
-                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg'>Go There!</button>
+                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg' onClick={()=>{
+                            navigate("/books")
+                        }}>Go There!</button>
                     </div>
                 </div>
 
