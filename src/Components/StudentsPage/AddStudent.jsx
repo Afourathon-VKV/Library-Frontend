@@ -33,9 +33,9 @@ export const AddStudent = () => {
                         </div>
 
                         <div className="mt-8 w-4/5 mx-auto">
-                            <div className="text-sm lg:text-gray-600 text-white">Password</div>
+                            <div className="text-sm lg:text-gray-600 text-white">Phone</div>
                             
-                            <input type="password" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 px-0 placeholder:text-white lg:placeholder:text-blue-550  focus:border-black lg:focus:border-black bg-transparent w-full" placeholder="Enter password" />
+                            <input type="password" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 px-0 placeholder:text-white lg:placeholder:text-blue-550  focus:border-black lg:focus:border-black bg-transparent w-full" placeholder="Enter phone number" />
                         </div>
                         
 

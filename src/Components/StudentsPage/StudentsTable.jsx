@@ -27,7 +27,7 @@ export const StudentTable=()=>{
 
                 {students.map((lib)=>(
                     <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
-                        <div className="hidden lg:block text-[10px] md:text-sm text-black text-left xl:col-span-1 lg:col-span-2">
+                        <div className="hidden lg:flex items-center pl-2 text-[10px] md:text-sm text-black text-left xl:col-span-1 lg:col-span-2">
                             <img src="/images/Student.png" className=""></img>
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-all pr-3">
