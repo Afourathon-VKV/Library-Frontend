@@ -8,6 +8,7 @@ import StudentPage from "./Components/StudentPage";
 import StudentDetailsPage from "./Components/StudentDetailsPage";
 import { AddStudent } from "./Components/StudentsPage/AddStudent";
 import BookDetailsPage from "./Components/BookDetailsPage";
+import PagesOptions from "./Components/PagesOptions";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/studentdetails/:id" element={<StudentDetailsPage/>}/>
         <Route path="/addstudent" element={<AddStudent/>}/>
         <Route path="/bookdetails/:id" element={<BookDetailsPage/>}/>
+        <Route path="/options" element={<PagesOptions/>}/>
       </Routes>
     </div>
   );
