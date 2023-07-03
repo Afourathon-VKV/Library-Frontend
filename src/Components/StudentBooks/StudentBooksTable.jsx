@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react"
+import { Button } from "@material-tailwind/react"
+import { AddBookModal } from "./AddBookModal"
 export const StudentBooksTable = () => {
     const [students, setStudents] = useState([{}, {}, {}])
     return (
@@ -10,35 +12,39 @@ export const StudentBooksTable = () => {
                     <div className="text-[12px] text-gray-400 text-left py-6 lg:col-span-2 xl:col-span-1 lg:block hidden ">
 
                     </div>
-                    <div className="text-[12px] text-gray-400 text-left py-6  col-span-2">
+                    <div className="text-[12px] text-gray-400 text-left py-6  col-span-2 ">
                         Title
                     </div>
-                    <div className="text-[12px] text-gray-400 text-left py-6 lg:col-span-2 col-span-3">
+                    <div className="text-[12px] text-gray-400 text-left py-6  col-span-2">
                         Author
                     </div>
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-2 ">
                         Code
                     </div>
-                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-3">
+                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-2">
                         Description
                     </div>
 
+                    <div className=" lg:col-span-2 xl:col-span-3 col-span-4  flex justify-end items-center">
+                        {/* <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-[12px] xl:text-[16px] py-2">Add Book</Button> */}
+                        <AddBookModal/>
+                    </div>
                 </div>
 
                 {students.map((lib) => (
                     <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
                         <div className="text-center pl-2 items-center h-full hidden lg:flex text-[10px] md:text-sm text-black  lg:col-span-2 xl:col-span-1">
-                            <img src="/images/BookElement.png" className="h-4/5 scale-90"></img>
+                            <img src="/images/BookElement.png" className="h-4/5 xl:scale-90 scale-75"></img>
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
                             John Cena
                         </div>
-                        <div className="text-[10px] md:text-sm text-black text-left my-auto lg:col-span-2 col-span-3 break-words pr-3">
+                        <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2  break-words pr-3">
                             jcena@cantseeme.com
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
                             1234567305477760                        </div>
-                        <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-4 col-span-3 break-words pr-3">
+                        <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-4 lg:col-span-3 col-span-4 break-words pr-3">
                             1234567890
 
                         </div>

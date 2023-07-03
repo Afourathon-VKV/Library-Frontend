@@ -19,7 +19,7 @@ export const AdLibTable = () => {
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-2 ">
                         Password
                     </div>
-                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-3">
+                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-3 md:pl-0 pl-3">
                         ID
                     </div>
 
@@ -39,7 +39,7 @@ export const AdLibTable = () => {
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
                             1234567890
                         </div>
-                        <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-4 col-span-3 break-words pr-3">
+                        <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-4 col-span-3 break-words pr-3  md:pl-0 pl-3">
                             1234567305477760
                         </div>
                         <div className="col-span-2 md:col-span-1 flex justify-end pr-8">

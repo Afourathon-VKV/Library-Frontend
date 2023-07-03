@@ -1,5 +1,6 @@
 import { Button } from "@material-tailwind/react"
 import { useState, useEffect } from "react"
+import { AddStudentModal } from "./AddStudentModal"
 export const BookStudentTable = () => {
     const [students, setStudents] = useState([{}, {}, {}])
     return (
@@ -20,11 +21,12 @@ export const BookStudentTable = () => {
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-2 ">
                         Phone
                     </div>
-                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-2">
-                        ID number
+                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-1">
+                        ID 
                     </div>
-                    <div className=" col-span-3 flex justify-end items-center">
-                        <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal text-[16px] py-2">Add Student</Button>
+                    <div className=" col-span-4 lg:col-span-3 xl:col-span-4 flex justify-end items-center">
+                        {/* <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] py-2">Add Student</Button> */}
+                        <AddStudentModal/>
                     </div>
 
                 </div>

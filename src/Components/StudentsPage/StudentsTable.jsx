@@ -15,7 +15,7 @@ export const StudentTable=()=>{
                     <div className="text-[12px] text-gray-400 text-left py-6  col-span-2">
                         Name
                     </div>
-                    <div className="text-[12px] text-gray-400 text-left py-6 col-span-2">
+                    <div className="text-[12px] text-gray-400 text-left py-6 lg:col-span-3 xl:col-span-2 col-span-2">
                         Email
                     </div>
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-2 ">
@@ -46,7 +46,7 @@ export const StudentTable=()=>{
                         </div>
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center ,md:items-center justify-end items-end">
-                               <Link to={`/bookdetails/1`}><Button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 ">See Books</Button></Link> 
+                               <Link to={`/studentdetails/1`}><Button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 ">See Books</Button></Link> 
                             </div>
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-6 md:mr-0 mt-1">
                                 <img src="/images/Pen.png" className="contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75 "></img>
