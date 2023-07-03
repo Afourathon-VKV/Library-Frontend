@@ -7,7 +7,7 @@ export default function PagesOptions() {
         <div className='min-h-[100vh] bg-blue-550 pb-8'>
             
             {/* Header */}
-            <div className="flex">
+            <div className="flex mb-6">
                 <div className="flex-auto text-white font-bold text-xl p-8">
                     Your Logo
                 </div>
@@ -19,7 +19,7 @@ export default function PagesOptions() {
             {/* Laptop Size */}
             <div className='hidden lg:flex justify-center'>
 
-                <div className='flex flex-col justify-around mr-8 bg-[#F9D745] rounded-md px-12 py-12 w-[30%]'>
+                <div className='flex flex-col justify-around mr-[8%] bg-[#F9D745] rounded-md px-12 py-12 w-[30%]'>
                     <img src="/images/Pic2.png" className="object-contain mx-auto my-4" alt="Student Page" />
                     <div className='text-3xl mt-7'>
                         Student Page
