@@ -1,7 +1,38 @@
 import { Button } from "@material-tailwind/react"
+import { useState } from "react"
 import { Link } from "react-router-dom"
 
 export const SignIn=()=>{
+
+    const [email, setEmail]=useState("");
+    const [password, setPassword]=useState("");
+    const [erroremail, setErroremail]=useState("");
+    const [errorpassword, setErrorpassword]=useState("");
+    var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+
+    const handleEmailChange=(e)=>{
+        let text=e.target.value;
+        if(!text.match(regEmail)) setErroremail("Invalid Email Address")
+        else setErroremail("")
+        setEmail(text);
+    }
+
+    const handlePasswordChange=(e)=>{
+        setPassword(e.target.value);
+        setErrorpassword("")
+    }
+
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        if(password=="" || email==""){
+            if(email=="") setErroremail("Required Field");
+            if(password=="") setErrorpassword("Required Field");
+        }
+        if(erroremail=="" && errorpassword==""){
+            //send request
+        }
+        
+    }
     return (
         <div>
             <div className="nlg:hidden font-bold text-xl ml-[15%] mt-10">
@@ -23,13 +54,15 @@ export const SignIn=()=>{
                 <form>
                     <div className="mt-2">
                         <div className="text-sm text-gray-600">Email</div>
-                        <input type="email" className="border-0 border-b-2  border-black text-sm mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  w-full" placeholder="Enter your email addresss" />
+                        <input type="email" className="border-0 border-b-2  border-black text-sm mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  w-full" placeholder="Enter your email addresss" value={email} onChange={handleEmailChange} />
+                        <div className="mt-1 text-red-600 text-sm">{erroremail}</div>
                     </div>
 
                     <div className="mt-12">
                         <div className="text-sm text-gray-600">Password</div>
                         
-                        <input type="password" className="border-0 border-b-2  border-black text-sm mt-1  focus:ring-0 px-0 placeholder:text-blue-550 focus:border-black w-full" placeholder="Enter your password" />
+                        <input type="password" className="border-0 border-b-2  border-black text-sm mt-1  focus:ring-0 px-0 placeholder:text-blue-550 focus:border-black w-full" placeholder="Enter your password" value={password} onChange={handlePasswordChange}/>
+                        <div className="mt-1 text-red-600 text-sm">{errorpassword}</div>
                     </div>
                     <div className="flex mt-4">
                         <div className="flex-auto">
@@ -43,7 +76,7 @@ export const SignIn=()=>{
                     </div>
 
                     <div className="flex justify-center mt-12">
-                        <Button className="bg-blue-250 w-full rounded-xl py-4">Login</Button>
+                        <Button className="bg-blue-250 w-full rounded-xl py-4" onClick={handleSubmit}>Login</Button>
                     </div>
                     
                     <div className="text-gray-600 text-center mt-6">
