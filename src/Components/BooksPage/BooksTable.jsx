@@ -1,8 +1,22 @@
 import { useState, useEffect } from "react"
 import { Button } from "@material-tailwind/react"
 import { Link } from "react-router-dom"
+import { deleteBook, fetchBooks } from "../../API/baseApi";
+import {ConfirmDeleteModal} from "./ConfirmDeleteModal";
+
 export const BooksTable = () => {
-    const [books, setBooks] = useState([{}, {}, {}])
+    const [bookCodetoDelete, setBookCodeToDelete] = useState();
+    const [books, setBooks] = useState([]);
+    const [deleteModal, setDeleteModal] = useState();
+    
+    useEffect(() => {
+        async function getBooks(){
+            await fetchBooks(setBooks);
+        }
+        getBooks();
+    }, []);
+
+    
     return (
         <div className="lg:col-span-2 xl:col-span-3 2xl:col-span-4 px-6">
             <div className="text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">Books List</div>
@@ -27,30 +41,38 @@ export const BooksTable = () => {
 
                 </div>
 
-                {books.map((lib) => (
-                    <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl  mb-3 xl:px-0 px-4 py-2">
+                {books.map((book,key) => (
+                    <div key={key} className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl  mb-3 xl:px-0 px-4 py-2">
                         <div className="text-center pl-2 items-center h-full hidden xl:flex text-[10px] md:text-sm text-black  xl:col-span-1">
                             <img src="/images/BookElement.png" className="h-4/5 scale-90"></img>
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
-                            John Cena
+                            {book.title}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-2 lg:col-span-3 col-span-2 break-words pr-3">
-                            jcena@cantseeme.com
+                            {book.author}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
-                            1234567305477760                        </div>
+                            {book.code}                        
+                        </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words md:col-span-3 pr-3">
-                            1234567890
+                            {book.description}
 
                         </div>
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center md:items-center justify-end items-end">
-                                <Link to={`/bookdetails/1`}><Button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 "> See Students</Button></Link>
+                                <Link to={`/bookdetails/${book.code}`}><Button className="bg-blue-550 normal-case text-[10px] xl:text-sm font-normal rounded-2xl py-2 "> See Students</Button></Link>
                             </div>
+
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-8 md:mr-0 mt-1">
-                                <img src="/images/Pen.png" className="contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75 "></img>
-                                <img src="/images/trash.png" className="contain my-auto md:scale-100 scale-75"></img>
+                                <img src="/images/Pen.png" className="hover:cursor-pointer contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75"></img>
+                                <img onClick={() => {
+                                    setDeleteModal('default');
+                                    setBookCodeToDelete(book.code);
+                                }} src="/images/trash.png" className="hover:cursor-pointer contain my-auto md:scale-100 scale-75"></img>
+                                <div className="col-span-4 lg:col-span-3 xl:col-span-4 flex justify-end items-center">
+                                    <ConfirmDeleteModal openModal={deleteModal} setOpenModal={setDeleteModal} code={bookCodetoDelete} />
+                                </div>
                             </div>
                             
                         </div>

@@ -1,4 +1,4 @@
-export const BookDetails = ({name,email,phone,id}) => {
+export const BookDetails = ({title,author,description,code}) => {
     return (
         <div className="col-span-1 pt-8 lg:pt-16 lg:pr-8 bg-blue-550 lg:min-h-fit lg:bg-transparent">
                 
@@ -14,28 +14,27 @@ export const BookDetails = ({name,email,phone,id}) => {
                     <div className="mt-6 text-black">
                         <div className=" w-4/5 mx-auto">
                             <div className="text-sm text-gray-600">Title</div>
-                            {name}
+                            {title}
                         </div>
                         <div className="mt-4 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600">Author</div>
-                            {email}
+                            {author}
                         </div>
 
                         <div className="mt-4 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600">Description</div>
-                            {phone}
+                            {description}
                         </div>
 
                         <div className="mt-4 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600">Code</div>
-                            {id}
+                            {code}
                         </div>
                     </div>
                     
                 </div>
 
                 <div className="my-8 flex justify-center w-full pt-2 px-4 text-white lg:hidden">
-                 
                         <input type="text" placeholder="Search" className="rounded-xl text-black text-sm sm:w-4/5 w-full"></input>
                 </div>
                 

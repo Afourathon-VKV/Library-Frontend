@@ -13,6 +13,7 @@ export default function StudentDetailsPage(){
 
             <div className="mt-4 grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2">
                 
+                {/* Student details component for smaller screens */}
                 <div className="lg:hidden">
                     <StudentDetails name="John Cena" email="Jcena@cantseeme.com" id={id} phone="123456789"/>
                 </div>
