@@ -2,16 +2,27 @@
 
 import {Modal } from 'flowbite-react';
 import { Button } from '@material-tailwind/react';
-import { useState } from 'react';
+import { useState,useRef } from 'react';
 
 export const AddBookModal=()=> {
   const [openModal, setOpenModal] = useState();
-  
+  const inputRef=useRef("")
+  const [errorcode,setError]=useState("");
 
+  const handleCode=(e)=>{
+    inputRef.current=e.target.value;
+    setError("");
+  }
   const handleSubmit=(e) => 
   {
       e.preventDefault();
-      setOpenModal(undefined)
+      if(inputRef.current==""){
+        setError("Required Field");
+      }
+      else if(errorcode==""){
+        setOpenModal(undefined)
+      }
+      
   }
   
   return (
@@ -43,7 +54,9 @@ export const AddBookModal=()=> {
                     
                 <div className=" w-4/5 mx-auto">
                     <div className="text-sm text-gray-600 ">Book Code</div>
-                    <input type="email" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0  placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book code" />
+                    <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0  placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book code" ref={inputRef} onChange={handleCode} />
+                    <div className="mt-1 text-red-600 text-sm">{errorcode}</div>
+
                 </div>
                 
                 <div className="flex justify-center mx-auto w-4/5 my-8">

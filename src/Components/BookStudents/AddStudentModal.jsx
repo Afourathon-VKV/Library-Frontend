@@ -3,25 +3,41 @@
 import {Modal } from 'flowbite-react';
 import { Button } from '@material-tailwind/react';
 import { useState } from 'react';
+import { useRef, useEffect } from 'react';
 
 export const AddStudentModal=()=> {
   const [openModal, setOpenModal] = useState();
-  
+  const inputRef = useRef(null);
+  const [errorrollno, setError]=useState("");
+
+  const handleRollno=(e)=>{
+    inputRef.current=e.target.value
+    setError("");
+  }
 
   const handleSubmit=(e) => 
   {
-      e.preventDefault();
-      setOpenModal(undefined)
-  }
-  const bg = {
-    overlay: {
-      background: "#F9D745"
+    e.preventDefault();
+    if(inputRef.current==""){
+      setError("Required field")
     }
-  };
+    else if(errorrollno==""){
+      //add request here
+      setOpenModal(undefined);
+    }
+      
+  }
+
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, []);
+
+ 
   return (
     <>
       <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] py-2" onClick={() => setOpenModal('default')}>Add Student</Button>
 
+    
       <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)} size="sm"  >
 
         <div className="flex items-start justify-between rounded-t dark:border-gray-600 p-5 bg-[#F9D745]">
@@ -46,8 +62,10 @@ export const AddStudentModal=()=> {
             <div className="mt-6 text-black">
                     
                 <div className=" w-4/5 mx-auto">
-                    <div className="text-sm text-gray-600 ">Student ID</div>
-                    <input type="email" className="border-0 border-b-2 border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter student Id" />
+                    <div className="text-sm text-gray-600 ">Rollno</div>
+                    <input type="text" className="border-0 border-b-2 border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter roll number" ref={inputRef} onChange={handleRollno}/>
+                    <div className="mt-1 text-red-600 text-sm">{errorrollno}</div>
+
                 </div>
                 
                 <div className="flex justify-center mx-auto w-4/5 my-8">
@@ -60,6 +78,7 @@ export const AddStudentModal=()=> {
         
         
       </Modal>
+  
     </>
   )
 }

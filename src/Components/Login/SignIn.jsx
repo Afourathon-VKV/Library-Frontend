@@ -28,7 +28,7 @@ export const SignIn=()=>{
             if(email=="") setErroremail("Required Field");
             if(password=="") setErrorpassword("Required Field");
         }
-        if(erroremail=="" && errorpassword==""){
+        else if(erroremail=="" && errorpassword==""){
             //send request
         }
         

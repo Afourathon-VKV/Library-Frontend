@@ -34,7 +34,7 @@ export const AdLibDetails=()=>{
             if(password=="") setErrorpassword("Required Field");
             if(name=="") setErrorname("Required Field");
         }
-        if(erroremail=="" && errorpassword=="" && errorname==""){
+        else if(erroremail=="" && errorpassword=="" && errorname==""){
             //send request
         }
         
@@ -65,7 +65,7 @@ export const AdLibDetails=()=>{
 
                         <div className=" w-4/5 mx-auto">
                             <div className="text-sm lg:text-gray-600 text-white">Name</div>
-                            <input type="email" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 focus:border-white lg:focus:border-black px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter librarian name" value={name} onChange={handleNameChange}/>
+                            <input type="name" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 focus:border-white lg:focus:border-black px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter librarian name" value={name} onChange={handleNameChange}/>
 
                             <div className="mt-1 text-red-600 text-sm">{errorname}</div>
                         </div>
