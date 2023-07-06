@@ -3,8 +3,8 @@
 import {Modal } from 'flowbite-react';
 import { Button } from '@material-tailwind/react';
 import { useState,useRef } from 'react';
-
-export const AddBookModal=()=> {
+import { lendBook } from '../../API/TransactionApi';
+export const AddBookModal=({rollNo})=> {
   const [openModal, setOpenModal] = useState();
   const inputRef=useRef("")
   const [errorcode,setError]=useState("");
@@ -13,14 +13,18 @@ export const AddBookModal=()=> {
     inputRef.current=e.target.value;
     setError("");
   }
-  const handleSubmit=(e) => 
+  const handleSubmit=async(e) => 
   {
       e.preventDefault();
       if(inputRef.current==""){
         setError("Required Field");
       }
       else if(errorcode==""){
+        let bookCode=inputRef.current;
+        console.log(bookCode);
+        await lendBook({"bookCode": bookCode ,"rollNo":rollNo})
         setOpenModal(undefined)
+        window.location.reload();
       }
       
   }

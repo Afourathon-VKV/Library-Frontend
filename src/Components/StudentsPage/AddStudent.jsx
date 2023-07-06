@@ -1,5 +1,7 @@
 import { Button } from "@material-tailwind/react"
 import { useState } from "react";
+import { addStudent } from "../../API/StudentApi";
+import { AddedStudentMessageDialog } from "./AddedStudentMessageModal";
 export const AddStudent = () => {
 
     const [name, setName]=useState("");
@@ -12,6 +14,9 @@ export const AddStudent = () => {
     const [errorrollno, setErrorrollno]=useState("");
     var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
     var regPhone=/^[0-9]{10}$/g;
+
+    const [addedModal,setAddedModal] = useState(null);
+    const [addedStudentDialogMessage, setAddedStudentDialogMessage] = useState("")
 
     const handleEmailChange=(e)=>{
         let text=e.target.value;
@@ -38,7 +43,7 @@ export const AddStudent = () => {
         setErrorrollno("");
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         if(phone=="" || email=="" || name=="" || rollno==""){
             if(email=="") setErroremail("Required Field");
@@ -47,9 +52,16 @@ export const AddStudent = () => {
             if(rollno=="") setErrorrollno("Required Field");
         }
 
-        else if(erroremail=="" && errorphone=="" && errorname=="" && errorrollno==""){
-            //send request
-            console.log("hi")
+        else if(erroremail=="" && errorphone=="" && errorname=="" && errorrollno=="")
+        {
+            await addStudent({
+                rollNo: rollno,
+                name: name,
+                email: email,
+                phone: phone
+            }, setAddedStudentDialogMessage);
+
+            setAddedModal('default');
         }
         
     }
@@ -75,6 +87,13 @@ export const AddStudent = () => {
                     <img src="/images/Pic1.png" className="object-contain flex mx-auto"></img>
                 </div>
                 <div className="mt-6 text-white lg:text-black">
+                    
+                    <div className="col-span-4 lg:col-span-3 xl:col-span-4 flex justify-end items-center">
+
+                        <AddedStudentMessageDialog openModal={addedModal} setOpenModal={setAddedModal} message={addedStudentDialogMessage} />
+                        
+                    </div>
+                    
                     <form>
 
                         <div className=" w-4/5 mx-auto">

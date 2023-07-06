@@ -1,6 +1,7 @@
 import { Button } from "@material-tailwind/react"
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { Login } from "../../API/StudentApi";
 
 export const SignIn=()=>{
 
@@ -22,7 +23,7 @@ export const SignIn=()=>{
         setErrorpassword("")
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         if(password=="" || email==""){
             if(email=="") setErroremail("Required Field");
@@ -30,6 +31,12 @@ export const SignIn=()=>{
         }
         else if(erroremail=="" && errorpassword==""){
             //send request
+            await Login(
+                {
+                    email: email,
+                    password: password
+                }
+            )
         }
         
     }

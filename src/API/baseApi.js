@@ -1,8 +1,9 @@
 import axios from "axios";
 
+
 export const fetchBooks = async (setBooks) => {
     try {
-        const response = await axios.get('http://localhost:8080/api/books');
+        const response = await axios.get('http://localhost:8080/api/booklending/books');
         setBooks(response.data);
     } catch (error) {
         console.error('Error fetching books:', error);
@@ -11,7 +12,7 @@ export const fetchBooks = async (setBooks) => {
 
 export const fetchBookDetails = async (setBook,code) => {
     try {
-        const response = await axios.get(`http://localhost:8080/api/books/code/${code}`);
+        const response = await axios.get(`http://localhost:8080/api/booklending/books/code/${code}`);
         setBook(response.data);
     } catch (error) {
         console.error('Error fetching book details', error);
@@ -20,7 +21,7 @@ export const fetchBookDetails = async (setBook,code) => {
 
 export const addBook = async (book, setMessage) => {
     try{
-        const response = await axios.post("http://localhost:8080/api/books",book);
+        const response = await axios.post("http://localhost:8080/api/boolending/books",book);
         setMessage("Book Added Successfully");
     }catch (error){
         if(error.response.data === "Null Fields in Body."){
@@ -33,8 +34,9 @@ export const addBook = async (book, setMessage) => {
 
 export const deleteBook = async (code) => {
     try{
-        const response = await axios.delete(`http://localhost:8080/api/books/code/${code}`);
+        const response = await axios.delete(`http://localhost:8080/api/booklending/books/code/${code}`);
     }catch (error){
         console.log(error)
     }
 }
+
