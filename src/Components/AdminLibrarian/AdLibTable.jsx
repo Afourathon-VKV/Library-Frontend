@@ -1,6 +1,13 @@
 import { useState, useEffect } from "react"
 export const AdLibTable = () => {
-    const [librarians, setLibs] = useState([{}, {}, {}])
+    const [librarians, setLibs] = useState([])
+
+    useEffect(()=>{
+        async function getlibrarians(){
+
+        }
+        getlibrarians();
+    },[])
     return (
         <div className="lg:col-span-2 xl:col-span-3 2xl:col-span-4 px-6">
             <div className="text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">Librarians</div>
@@ -31,16 +38,16 @@ export const AdLibTable = () => {
                             <img src="/images/Profile.png" className=" h-20 object-contain"></img>
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
-                            John Cena
+                            {lib.name}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto lg:col-span-2 col-span-3 break-words pr-3">
-                            jcena@cantseeme.com
+                            {lib.email}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
-                            1234567890
+                            {lib.password}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-4 col-span-3 break-words pr-3  md:pl-0 pl-3">
-                            1234567305477760
+                            {lib.id}
                         </div>
                         <div className="col-span-2 md:col-span-1 flex justify-end pr-8">
                             <img src="/images/trash.png" className="contain my-auto md:scale-100 scale-75"></img>
