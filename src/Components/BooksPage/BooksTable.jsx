@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react"
 import { Button } from "@material-tailwind/react"
 import { Link } from "react-router-dom"
-import { deleteBook, fetchBooks } from "../../API/baseApi";
+import { fetchBooks } from "../../API/baseApi";
 import {ConfirmDeleteModal} from "./ConfirmDeleteModal";
+import UpdateBookModal from "./UpdateBookModal";
 
 export const BooksTable = () => {
     const [bookCodetoDelete, setBookCodeToDelete] = useState();
     const [books, setBooks] = useState([]);
     const [deleteModal, setDeleteModal] = useState();
+    const [updateModal, setUpdateModal] = useState();
+    const [booktoUpdate, setBookToUpdate]=useState();
     
     useEffect(() => {
         async function getBooks(){
@@ -65,7 +68,13 @@ export const BooksTable = () => {
                             </div>
 
                             <div className="flex md:justify-center md:items-center justify-end items-end mr-8 md:mr-0 mt-1">
-                                <img src="/images/Pen.png" className="hover:cursor-pointer contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75"></img>
+                                <img src="/images/Pen.png" className="hover:cursor-pointer contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75" onClick={()=>{
+                                    setUpdateModal('default');
+                                    setBookToUpdate(book);
+                                }}></img>
+
+                                <UpdateBookModal openModal={updateModal} setOpenModal={setUpdateModal} details={booktoUpdate} />
+
                                 <img onClick={() => {
                                     setDeleteModal('default');
                                     setBookCodeToDelete(book.code);

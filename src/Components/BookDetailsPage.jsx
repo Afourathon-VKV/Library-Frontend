@@ -27,7 +27,7 @@ export default function BookDetailsPage(){
                     <BookDetails title={book.title} author={book.author} code={book.code} description={book.description}/>
                 </div>
 
-                <BookStudentTable/>
+                <BookStudentTable id={id}/>
 
                 <div className="lg:block hidden">
                     <BookDetails title={book.title} author={book.author} code={book.code} description={book.description}/>
