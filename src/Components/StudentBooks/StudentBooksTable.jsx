@@ -61,7 +61,7 @@ export const StudentBooksTable = ({id}) => {
 
                         </div>
                         <div className="col-span-2 lg:col-span-1  flex justify-end xl:pr-8 pr-4">
-                            <img src="/images/Pen.png" className="contain my-auto xl:mr-6 mr-4 md:scale-100 scale-75 "></img>
+
                             <img src="/images/trash.png" className="hover:cursor-pointer contain my-auto md:scale-100 scale-75" onClick={()=>{
                                  setModal('default');
                                  setIdToDelete(lib.bookLendingEntity.transactionId);

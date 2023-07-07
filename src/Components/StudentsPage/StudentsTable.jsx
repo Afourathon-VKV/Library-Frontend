@@ -37,7 +37,7 @@ export const StudentTable=()=>{
                         Phone
                     </div>
                     <div className="text-[12px] text-gray-400 text-left py-6 col-span-3">
-                        ID
+                        Roll No
                     </div>
                     
                 </div>
