@@ -1,13 +1,18 @@
 import { useState, useEffect } from "react"
+import { getLibrarian } from "../../API/TransactionApi"
+import { ConfirmLibrarianDelete } from "./ConfirmLibrarianDelete";
 export const AdLibTable = () => {
     const [librarians, setLibs] = useState([])
-
+    const [email, setEmail]=useState();
+    const [modal, setModal]=useState();
     useEffect(()=>{
         async function getlibrarians(){
-
+            await getLibrarian(setLibs)
         }
         getlibrarians();
+
     },[])
+    
     return (
         <div className="lg:col-span-2 xl:col-span-3 2xl:col-span-4 px-6">
             <div className="text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">Librarians</div>
@@ -33,7 +38,7 @@ export const AdLibTable = () => {
                 </div>
 
                 {librarians.map((lib) => (
-                    <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
+                    <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl py-2 mb-3 lg:px-0 px-4">
                         <div className="hidden lg:block text-[10px] md:text-sm text-black text-left xl:col-span-1 lg:col-span-2">
                             <img src="/images/Profile.png" className=" h-20 object-contain"></img>
                         </div>
@@ -50,7 +55,11 @@ export const AdLibTable = () => {
                             {lib.id}
                         </div>
                         <div className="col-span-2 md:col-span-1 flex justify-end pr-8">
-                            <img src="/images/trash.png" className="contain my-auto md:scale-100 scale-75"></img>
+                            <img src="/images/trash.png" className="hover:cursor-pointer contain my-auto md:scale-100 scale-75" onClick={()=>{
+                                setModal('default');
+                                setEmail(lib.email);
+                            }}></img>
+                            <ConfirmLibrarianDelete email={email} openModal={modal} setOpenModal={setModal}/>
                         </div>
                     </div>
                 ))}

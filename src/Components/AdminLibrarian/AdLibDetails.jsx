@@ -1,5 +1,6 @@
 import { Button } from "@material-tailwind/react"
 import { useState } from "react"
+import { addLibrarian } from "../../API/TransactionApi";
 export const AdLibDetails=()=>{
 
     const [name, setName]=useState("");
@@ -27,7 +28,7 @@ export const AdLibDetails=()=>{
         setErrorname("")
     }
 
-    const handleSubmit=(e)=>{
+    const handleSubmit=async(e)=>{
         e.preventDefault();
         if(password=="" || email=="" || name==""){
             if(email=="") setErroremail("Required Field");
@@ -36,6 +37,13 @@ export const AdLibDetails=()=>{
         }
         else if(erroremail=="" && errorpassword=="" && errorname==""){
             //send request
+            await addLibrarian({
+                "username": name,
+                "name": name,
+                "password": password,
+                "email": email
+            })
+            window.location.reload();
         }
         
     }
