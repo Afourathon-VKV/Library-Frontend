@@ -4,7 +4,8 @@ import { Link } from "react-router-dom"
 import { fetchStudents } from "../../API/StudentApi"
 import { ConfirmStudentDeleteModal } from "./ConfirmStudentDeleteModal"
 import { UpdateStudentModal } from "./UpdateStudentmodal"
-export const StudentTable=()=>{
+
+export const StudentTable=({searchStudent})=>{
     const [students, setStudents]=useState([])
     const [deleteModal, setDeleteModal] = useState();
     const [rollNotoDelete, setRollNoToDelete] = useState();
@@ -42,8 +43,9 @@ export const StudentTable=()=>{
                     
                 </div>
 
-                {students.map((lib)=>(
-                    <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl mb-3 xl:px-0 px-4 py-2">
+                {students.map((lib,key)=>(
+                    (searchStudent === "" || (lib.name).includes(searchStudent)) &&
+                    <div key={key} className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl mb-3 xl:px-0 px-4 py-2">
                         <div className="hidden xl:flex items-center pl-2 text-[10px] md:text-sm text-black text-left xl:col-span-1 mr-2">
                             <img src="/images/Student.png" className=""></img>
                         </div>
@@ -51,13 +53,13 @@ export const StudentTable=()=>{
                             {lib.name}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto xl:col-span-2 lg:col-span-3 col-span-2 break-words pr-3">
-                        {lib.email}
+                            {lib.email}
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words pr-3">
-                        {lib.phone}                 
+                            {lib.phone}                 
                         </div>
                         <div className="text-[10px] md:text-sm text-black text-left my-auto col-span-2 break-words md:col-span-3  pr-3">
-                        {lib.rollNo}
+                            {lib.rollNo}
                         </div>
                         <div className="  col-span-4 md:col-span-3 lg:col-span-2 flex-col my-auto pr-2">
                             <div className="flex md:justify-center ,md:items-center justify-end items-end">

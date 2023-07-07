@@ -34,9 +34,9 @@ export const BookDetails = ({title,author,description,code}) => {
                     
                 </div>
 
-                <div className="my-8 flex justify-center w-full pt-2 px-4 text-white lg:hidden">
+                {/* <div className="my-8 flex justify-center w-full pt-2 px-4 text-white lg:hidden">
                         <input type="text" placeholder="Search" className="rounded-xl text-black text-sm sm:w-4/5 w-full"></input>
-                </div>
+                </div> */}
                 
             </div>
     )

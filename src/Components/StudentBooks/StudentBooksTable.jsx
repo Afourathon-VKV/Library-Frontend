@@ -3,7 +3,7 @@ import { Button } from "@material-tailwind/react"
 import { AddBookModal } from "./AddBookModal"
 import { getLendedBooks } from "../../API/TransactionApi"
 import { ConfirmBookDelete } from "./ConfirmBookDelete"
-export const StudentBooksTable = ({id}) => {
+export const StudentBooksTable = ({id,searchBook}) => {
 
     const [books, setBooks] = useState([])
     const [deleteModal, setModal]=useState();
@@ -42,9 +42,9 @@ export const StudentBooksTable = ({id}) => {
                     </div>
                 </div>
 
-                {books.map((lib) => (
-                    
-                    <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
+                {books.map((lib,key) => (
+                    (searchBook==="" || lib.title.includes(searchBook)) && 
+                    <div key={key} className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
                         <div className="text-center pl-2 items-center h-full hidden lg:flex text-[10px] md:text-sm text-black  lg:col-span-2 xl:col-span-1">
                             <img src="/images/BookElement.png" className="h-4/5 xl:scale-90 scale-75"></img>
                         </div>

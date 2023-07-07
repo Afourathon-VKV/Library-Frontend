@@ -40,8 +40,8 @@ export const BookStudentTable = ({id}) => {
 
                 </div>
 
-                {students.map((student) => (
-                    <div className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
+                {students.map((student,key) => (
+                    <div key={key} className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl h-16 lg:h-20 mb-3 lg:px-0 px-4">
                         <div className="text-center pl-2 items-center h-full hidden lg:flex text-[10px] md:text-sm text-black  lg:col-span-2 xl:col-span-1">
                             <img src="/images/Student.png" className="h-4/5 scale-90"></img>
                         </div>

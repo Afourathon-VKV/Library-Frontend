@@ -5,7 +5,7 @@ import { fetchBooks } from "../../API/baseApi";
 import {ConfirmDeleteModal} from "./ConfirmDeleteModal";
 import UpdateBookModal from "./UpdateBookModal";
 
-export const BooksTable = () => {
+export const BooksTable = ({searchBooks}) => {
     const [bookCodetoDelete, setBookCodeToDelete] = useState();
     const [books, setBooks] = useState([]);
     const [deleteModal, setDeleteModal] = useState();
@@ -45,6 +45,7 @@ export const BooksTable = () => {
                 </div>
 
                 {books.map((book,key) => (
+                    (searchBooks === "" || book.title.includes(searchBooks)) &&  
                     <div key={key} className="grid grid-cols-12 bg-[#FFFFF0] rounded-xl  mb-3 xl:px-0 px-4 py-2">
                         <div className="text-center pl-2 items-center h-full hidden xl:flex text-[10px] md:text-sm text-black  xl:col-span-1">
                             <img src="/images/BookElement.png" className="h-4/5 scale-90"></img>

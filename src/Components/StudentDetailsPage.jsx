@@ -7,7 +7,8 @@ import { useEffect,useState } from "react";
 import { fetchStudentDetails } from "../API/StudentApi";
 export default function StudentDetailsPage(){
     const {id} = useParams();
-    const [student, setStudent]=useState();
+    const [student, setStudent] = useState();
+    const [searchBook, setSearchBook] = useState("");
     // Query database and get all other details from id.
 
     useEffect(()=>{
@@ -20,19 +21,19 @@ export default function StudentDetailsPage(){
     return (
         <div className="bg-blue-550 min-h-screen pb-6">
         
-            <StudentBooksHeader/>
+            <StudentBooksHeader setSearchBook={setSearchBook} />
 
             <div className="mt-4 grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2">
                 
                 {/* Student details component for smaller screens */}
                 <div className="lg:hidden">
-                    <StudentDetails name={student?.name} email={student?.email} id={student?.rollNo} phone={student?.phone}/>
+                    <StudentDetails setSearchBook={setSearchBook} name={student?.name} email={student?.email} id={student?.rollNo} phone={student?.phone}/>
                 </div>
 
-                <StudentBooksTable id={id}/>
+                <StudentBooksTable searchBook={searchBook} id={id}/>
 
                 <div className="lg:block hidden">
-                    <StudentDetails name={student?.name} email={student?.email} id={student?.rollNo} phone={student?.phone}/>
+                    <StudentDetails setSearchBook={setSearchBook} name={student?.name} email={student?.email} id={student?.rollNo} phone={student?.phone}/>
                 </div>
 
             </div>

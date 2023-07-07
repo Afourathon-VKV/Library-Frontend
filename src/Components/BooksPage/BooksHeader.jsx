@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react"
 import { Link } from "react-router-dom"
 
-export const BooksHeader = () => {
+export const BooksHeader = ({setSearchBook}) => {
     return (
         <div>
             <div className="flex pt-8 px-6 lg:px-12 text-white">
@@ -9,7 +9,7 @@ export const BooksHeader = () => {
                     Your Logo
                 </div>
                 <div className=" pr-[28%] xl:pr-[19%] 2xl:pr-[16%] hidden lg:flex">
-                    <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
+                    <input onChange={(e) => setSearchBook(e.target.value)} type="text" placeholder="Search by Title" className="rounded-xl text-black text-sm"></input>
                 </div>
                 <div className="flex text-xl">
                     Logout
@@ -25,7 +25,7 @@ export const BooksHeader = () => {
                         </Link>
                     </div>
                     <div className="flex">
-                        <input type="text" placeholder="Search" className="rounded-xl text-black text-sm w-[90%]"></input>
+                        <input onChange={(e) => setSearchBook(e.target.value)} type="text" placeholder="Search By Title" className="rounded-xl text-black text-sm w-[90%]"></input>
                     </div>
                 </div>
             </div>
