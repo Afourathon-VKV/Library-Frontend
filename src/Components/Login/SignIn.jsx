@@ -1,14 +1,17 @@
 import { Button } from "@material-tailwind/react"
+import { useEffect } from "react";
 import { useState } from "react"
-import { Link } from "react-router-dom"
+import { Link ,useNavigate} from "react-router-dom"
 import { Login } from "../../API/StudentApi";
 
 export const SignIn=()=>{
-
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
     const [erroremail, setErroremail]=useState("");
     const [errorpassword, setErrorpassword]=useState("");
+
+    const navigate = useNavigate();
+
     var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
 
     const handleEmailChange=(e)=>{
@@ -31,16 +34,19 @@ export const SignIn=()=>{
         }
         else if(erroremail=="" && errorpassword==""){
             //send request
-            await Login(
+            let p=await Login(
                 {
                     email: email,
                     password: password
                 }
             )
+            if(p) navigate("/dashboard")
         }
+
         
     }
     return (
+
         <div>
             <div className="nlg:hidden font-bold text-xl ml-[15%] mt-10">
                 Your Logo

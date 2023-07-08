@@ -3,11 +3,13 @@ import { Button } from "@material-tailwind/react"
 import { AddBookModal } from "./AddBookModal"
 import { getLendedBooks } from "../../API/TransactionApi"
 import { ConfirmBookDelete } from "./ConfirmBookDelete"
+import { useNavigate } from "react-router-dom"
 export const StudentBooksTable = ({id,searchBook}) => {
 
     const [books, setBooks] = useState([])
     const [deleteModal, setModal]=useState();
     const [trid, setIdToDelete]=useState();
+    const navigate=useNavigate();
     useEffect(()=>{
         async function fetchBooks(){
             await getLendedBooks(id,setBooks);
@@ -16,7 +18,12 @@ export const StudentBooksTable = ({id,searchBook}) => {
     }, [])
     return (
         <div className="lg:col-span-2 xl:col-span-3 2xl:col-span-4 px-6">
-            <div className="flex  text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">Books List</div>
+            <div className="flex  text-2xl font-bold text-white border-gray-400 border-b-2 pb-4 ">
+                <div className="flex-auto">Books List</div>
+                <div >      
+                <Button className="bg-[#F9D745] text-blue-550 rounded-3xl normal-case font-normal  text-[10px] md:text-sm xl:text-[16px] md:py-2 py-0" onClick={()=>{navigate("/students")}}>Return</Button>
+            </div>
+                </div>
 
             <div className="w-full">
                 <div className="grid grid-cols-12 lg:mx-0 mx-4">

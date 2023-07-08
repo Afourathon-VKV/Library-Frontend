@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
 import AdminLibrarian from "./Components/AdminLibrarian";
 import { AdLibDetails } from "./Components/AdminLibrarian/AdLibDetails";
 import Home from './Components/Home';
@@ -12,31 +12,33 @@ import PagesOptions from "./Components/PagesOptions";
 import BooksPage from "./Components/BooksPage";
 import { AddBook } from "./Components/BooksPage/AddBook";
 
+
 function App() {
+  
   return (
-    <div className="App">
-      <Routes>
-      
-        <Route path="/" element={<Home/>} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/signup" element={<Signup/>} />
-
-        <Route path="/adminlibrarian" element={<AdminLibrarian/>} />
-        <Route path="/addlibrarian" element={<AdLibDetails/>} />
-
-        <Route path="/students" element={<StudentPage/>}/>
-        <Route path="/addstudent" element={<AddStudent/>}/>
+      <div className="App">
+        <Routes>
         
-        <Route path="/studentdetails/:id" element={<StudentDetailsPage/>}/>
+          <Route path="*" element={<Navigate to={`/login`}/>} />
+          <Route path="/login" element={<Login/>} />
+          <Route path="/signup" element={<Signup/>} />
 
-        <Route path="/books" element={<BooksPage/>}/>
-        <Route path="/bookdetails/:id" element={<BookDetailsPage/>}/>
-        <Route path="/addbook" element={<AddBook/>}/>
+          <Route path="/adminlibrarian" element={<AdminLibrarian/>} />
+          <Route path="/addlibrarian" element={<AdLibDetails/>} />
+
+          <Route path="/students" element={<StudentPage/>}/>
+          <Route path="/addstudent" element={<AddStudent/>}/>
+          
+          <Route path="/studentdetails/:id" element={<StudentDetailsPage/>}/>
+
+          <Route path="/books" element={<BooksPage/>}/>
+          <Route path="/bookdetails/:id" element={<BookDetailsPage/>}/>
+          <Route path="/addbook" element={<AddBook/>}/>
 
 
-        <Route path="/options" element={<PagesOptions/>}/>
-      </Routes>
-    </div>
+          <Route path="/dashboard" element={<PagesOptions/>}/>
+        </Routes>
+      </div>
   );
 }
 

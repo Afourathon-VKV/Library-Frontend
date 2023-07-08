@@ -1,5 +1,5 @@
 import React from 'react'
-import {useNavigate} from "react-router-dom"
+import {useNavigate,Link} from "react-router-dom"
 
 export default function PagesOptions() {
     const navigate = useNavigate();
@@ -8,8 +8,8 @@ export default function PagesOptions() {
             
             {/* Header */}
             <div className="flex mb-6">
-                <div className="flex-auto text-white font-bold text-xl p-8">
-                    Your Logo
+                <div className="hover:cursor-pointer flex-auto text-white font-bold text-xl p-8">
+                    <Link to={`/dashboard`}>Your Logo</Link>
                 </div>
                 <div className="text-white text-xl p-8">
                     Logout
@@ -67,7 +67,9 @@ export default function PagesOptions() {
                         Manage books for a selected Student from a list of all students.
                     </div>
                     <div className='mt-6'>
-                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg'>Go There!</button>
+                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg' onClick={()=>{
+                            navigate("/students")
+                        }}>Go There!</button>
                     </div>
                 </div>
                 
@@ -80,7 +82,9 @@ export default function PagesOptions() {
                         Manage Students for a selected Book from a list of all Books.
                     </div>
                     <div className='mt-6'>
-                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg'>Go There!</button>
+                        <button className='bg-[#000842] hover:bg-[#4d5599] text-white w-[100%] h-[40px] rounded-lg' onClick={()=>{
+                            navigate("/books")
+                        }}>Go There!</button>
                     </div>
                 </div>
             

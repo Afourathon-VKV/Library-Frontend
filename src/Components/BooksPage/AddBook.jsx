@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { addBook } from "../../API/baseApi";
 import { AddedBookMessageDialog } from "./AddedBookMessageModal";
+import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 export const AddBook = () => {
     
     const [addedModal,setAddedModal] = useState(null);
@@ -77,6 +79,9 @@ export const AddBook = () => {
 
                         <div className="flex justify-center mx-auto w-4/5 mt-12 mb-3">
                             <button type="submit" className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white">Add</button>
+                        </div>
+                        <div className="flex justify-center mx-auto w-4/5 mt-6 mb-3">
+                            <Link to={`/books`}><Button className="bg-[#F9D745]  lg:hidden normal-case rounded-xl py-4 text-blue-550 ">Return</Button></Link>
                         </div>
                         
                     </form>

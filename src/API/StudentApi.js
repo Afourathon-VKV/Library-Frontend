@@ -63,9 +63,9 @@ export const fetchStudentDetails=async(setStudent,rollNo)=>{
 
 export const Login=async(Login)=>{
     try{
-    
         const response=await axiosInstance.post(BookLendingAppUrl+"/api/users/login",Login);
-        localStorage.setItem("jwt",response.data);        
+        localStorage.setItem("jwt", response.data)
+        return response.status==200?true:false
     }
     catch(error){
         console.log(error)
