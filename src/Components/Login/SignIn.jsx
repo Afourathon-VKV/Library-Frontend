@@ -46,6 +46,10 @@ export const SignIn=()=>{
 
        
     }
+    
+    useEffect(()=>{
+        if(localStorage.getItem("jwt")) navigate("/dashboard")
+    },[])
     return (
 
         <div>
