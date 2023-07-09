@@ -12,6 +12,9 @@ export default function PagesOptions() {
                     <Link to={`/dashboard`}>Your Logo</Link>
                 </div>
                 <div className="text-white text-xl p-8">
+                    <Link to={`/adminlibrarian`}> Librarians</Link>
+                </div>
+                <div className="text-white text-xl p-8">
                     Logout
                 </div>
             </div>

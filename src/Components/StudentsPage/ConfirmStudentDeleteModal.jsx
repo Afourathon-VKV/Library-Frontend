@@ -9,7 +9,7 @@ export const ConfirmStudentDeleteModal = ({rollNo,openModal,setOpenModal}) => {
       e.preventDefault();
       await deleteStudent(rollNo);
       setOpenModal(undefined);
-      // window.location.reload();
+      window.location.reload();
   }
 
   return (

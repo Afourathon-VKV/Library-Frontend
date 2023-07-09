@@ -8,7 +8,9 @@ const axiosInstance = axios.create({
 
 export const fetchBooks = async (setBooks) => {
     try {
-        const response = await axiosInstance.get(BookLendingAppUrl+ '/api/booklending/books');
+        const response = await axiosInstance.get(BookLendingAppUrl+ '/api/booklending/books',{headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }});
         setBooks(response.data);
     } catch (error) {
         console.error('Error fetching books:', error);
@@ -17,29 +19,34 @@ export const fetchBooks = async (setBooks) => {
 
 export const fetchBookDetails = async (setBook,code) => {
     try {
-        const response = await axiosInstance.get(BookLendingAppUrl+ `/api/booklending/books/code/${code}`);
+        const response = await axiosInstance.get(BookLendingAppUrl+ `/api/booklending/books/code/${code}`,{headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }});
         setBook(response.data);
     } catch (error) {
         console.error('Error fetching book details', error);
     }
 };
 
-export const addBook = async (book, setMessage) => {
+export const addBook = async (Book, setMessage) => {
+    console.log(Book);
     try{
-        const response = await axiosInstance.post(BookLendingAppUrl+ "/api/boolending/books",book);
-        setMessage("Book Added Successfully");
-    }catch (error){
-        if(error.response.data === "Null Fields in Body."){
-            setMessage("Cannot add book due to empty fields.")
-        }else if(error.response.data === "A Book with that code already exists."){
-            setMessage("Cannot add book as a book with that code already exists.")
-        }
+        const response=await axiosInstance.post(BookLendingAppUrl + "/api/booklending/books",Book, {headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }})
+        setMessage("Book Added Successfully")
+    }
+    catch(error){
+        console.log(error);
+        setMessage(error.message)
     }
 }
 
 export const deleteBook = async (code) => {
     try{
-        const response = await axiosInstance.delete(BookLendingAppUrl+ `/api/booklending/books/code/${code}`);
+        const response = await axiosInstance.delete(BookLendingAppUrl+ `/api/booklending/books/code/${code}`,{headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }});
     }catch (error){
         console.log(error)
     }
@@ -47,7 +54,9 @@ export const deleteBook = async (code) => {
 
 export const updateBook = async(Book) => {
     try{
-        const response = await axiosInstance.put(BookLendingAppUrl + "/api/booklending/books", Book);
+        const response = await axiosInstance.put(BookLendingAppUrl + "/api/booklending/books", Book,{headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }});
     }
     catch(error){
         console.log(error);

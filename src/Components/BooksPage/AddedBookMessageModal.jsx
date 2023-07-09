@@ -6,8 +6,8 @@ export const AddedBookMessageDialog = ({message,openModal,setOpenModal}) => {
   
   const handleSubmit = async (e) => {
       e.preventDefault();
-      setOpenModal(undefined);
       window.location.reload();
+      setOpenModal(undefined);
   }
 
   return (

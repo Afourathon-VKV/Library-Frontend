@@ -70,9 +70,9 @@ export const AddStudent = () => {
     return (
         <div className="col-span-1 pt-6 lg:pr-8 bg-blue-550 min-h-screen lg:min-h-fit lg:bg-transparent ">
                 <div className="flex pt-2 px-12 text-white lg:hidden">
-                    <div className="flex-auto font-bold text-xl">
-                        Your Logo
-                    </div>
+                <div className="hover:cursor-pointer flex-auto text-white font-bold text-xl ">
+                    <Link to={`/dashboard`}>Your Logo</Link>
+                </div>
                     <div className=" pr-[20%] hidden lg:flex">
                         <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
                     </div>

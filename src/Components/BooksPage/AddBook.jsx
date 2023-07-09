@@ -1,23 +1,68 @@
-import { useState } from "react"
-import { addBook } from "../../API/baseApi";
-import { AddedBookMessageDialog } from "./AddedBookMessageModal";
+import { Button } from "@material-tailwind/react"
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@material-tailwind/react";
+import { AddedBookMessageDialog } from "./AddedBookMessageModal";
+import { addBook } from "../../API/baseApi";
 export const AddBook = () => {
-    
+
+    const [name, setName]=useState("");
+    const [email, setEmail]=useState("");
+    const [phone, setPhone]=useState("");
+    const [rollno, setRollno]=useState("");
+    const [erroremail, setErroremail]=useState("");
+    const [errorphone, setErrorphone]=useState("");
+    const [errorname, setErrorname]=useState("");
+    const [errorrollno, setErrorrollno]=useState("");
+
     const [addedModal,setAddedModal] = useState(null);
-    const [title, changeTitle] = useState(null);
-    const [addedBookDialogMessage, setAddedBookDialogMessage] = useState("")
-    const [author, changeAuthor] = useState(null);
-    const [description, changeDescription] = useState(null);
-    const [code,changeCode] = useState(null);
-    
+    const [addedStudentDialogMessage, setAddedStudentDialogMessage] = useState("")
+
+    const handleEmailChange=(e)=>{
+        let text=e.target.value;
+        setErroremail("")
+        setEmail(text);
+    }
+
+    const handlePhoneChange=(e)=>{
+        setErrorphone("")
+        setPhone(e.target.value);
+        
+    }
+
+    const handleNameChange=(e)=>{
+        setName(e.target.value);
+        setErrorname("")
+    }
+
+    const handleRollnoChange=(e)=>{
+        setRollno(e.target.value);
+        setErrorrollno("");
+    }
+
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        if(phone=="" || email=="" || name=="" || rollno==""){
+            if(email=="") setErroremail("Required Field");
+            if(phone=="") setErrorphone("Required Field");
+            if(name=="") setErrorname("Required Field");
+            if(rollno=="") setErrorrollno("Required Field");
+        }
+
+        else if(erroremail=="" && errorphone=="" && errorname=="" && errorrollno=="")
+        {
+            await addBook({title:name ,author:email,description:phone,code:rollno},setAddedStudentDialogMessage);
+
+            setAddedModal('default');
+        }
+        
+    }
+
     return (
         <div className="col-span-1 pt-6 lg:pr-8 bg-blue-550 min-h-screen lg:min-h-fit lg:bg-transparent ">
                 <div className="flex pt-2 px-12 text-white lg:hidden">
-                    <div className="flex-auto font-bold text-xl">
-                        Your Logo
-                    </div>
+                <div className="hover:cursor-pointer flex-auto text-white font-bold text-xl ">
+                    <Link to={`/dashboard`}>Your Logo</Link>
+                </div>
                     <div className=" pr-[20%] hidden lg:flex">
                         <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
                     </div>
@@ -35,53 +80,50 @@ export const AddBook = () => {
                 <div className="mt-6 text-white lg:text-black">
                     
                     <div className="col-span-4 lg:col-span-3 xl:col-span-4 flex justify-end items-center">
-                        <AddedBookMessageDialog openModal={addedModal} setOpenModal={setAddedModal} message={addedBookDialogMessage} />
+
+                        <AddedBookMessageDialog openModal={addedModal} setOpenModal={setAddedModal} message={addedStudentDialogMessage} />
+                        
                     </div>
                     
-                    <form onSubmit={async (e)=>{
-                        e.preventDefault();
-                        await addBook({title:title,author:author,description:description,code:code},setAddedBookDialogMessage);
-                        setAddedModal('default');
-                        }}>
+                    <form>
 
                         <div className=" w-4/5 mx-auto">
                             <div className="text-sm lg:text-gray-600 text-white">Title</div>
-                            <input type="text" 
-                            onChange = {(e)=>{
-                                e.target.value == "" ? changeTitle(null) : changeTitle(e.target.value);}} 
-                            className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 focus:border-white lg:focus:border-black px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter Book Title" 
-                            />
+                            <input type="text" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 focus:border-white lg:focus:border-black px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter Book Title" value={name} onChange={handleNameChange}/>
+
+                            <div className="mt-1 text-red-600 text-sm">{errorname}</div>
+
                         </div>
                         <div className="mt-8 w-4/5 mx-auto">
                             <div className="text-sm lg:text-gray-600 text-white">Author</div>
-                            <input type="text" onChange = {(e)=>{
-                                e.target.value == "" ? changeAuthor(null) : changeAuthor(e.target.value);}} 
-                            className="border-0 border-b-2   border-white lg:border-black text-[16px] mt-1  focus:ring-0 lg:focus:border-black focus:border-white px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter Author Name"   
-                            />
+                            <input type="text" className="border-0 border-b-2   border-white lg:border-black text-[16px] mt-1  focus:ring-0 lg:focus:border-black focus:border-white px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter Author Name" value={email} onChange={handleEmailChange}/>
+
+                            <div className="mt-1 text-red-600 text-sm">{erroremail}</div>
+
                         </div>
 
                         <div className="mt-8 w-4/5 mx-auto">
-                            <div className="text-sm lg:text-gray-600 text-white">Description</div>
-                            <input type="text" onChange = {(e)=>{
-                                e.target.value == "" ? changeDescription(null) : changeDescription(e.target.value);}} 
-                            className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 px-0 placeholder:text-white lg:placeholder:text-blue-550  focus:border-black lg:focus:border-black bg-transparent w-full" placeholder="Enter Description"      
-                            />
+                             <div className="text-sm lg:text-gray-600 text-white">Description</div>
+                            <input type="text" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 focus:border-white lg:focus:border-black px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter Description" value={phone} onChange={handlePhoneChange}/>
+
+                            <div className="mt-1 text-red-600 text-sm">{errorphone}</div>
+
                         </div>
 
                         <div className="mt-8 w-4/5 mx-auto">
                             <div className="text-sm lg:text-gray-600 text-white">Code</div>
-                            <input type="text" onChange = {(e)=>{
-                                e.target.value == "" ? changeCode(null) : changeCode(e.target.value);}} 
-                            className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 px-0 placeholder:text-white lg:placeholder:text-blue-550  focus:border-black lg:focus:border-black bg-transparent w-full" placeholder="Enter Code" 
-                            />
+                            <input type="text" className="border-0 border-b-2  border-white lg:border-black text-[16px] mt-1  focus:ring-0 focus:border-white lg:focus:border-black px-0 placeholder:text-white lg:placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter Code" value={rollno} onChange={handleRollnoChange}/>
+
+                            <div className="mt-1 text-red-600 text-sm">{errorrollno}</div>
+
                         </div>
                         
 
                         <div className="flex justify-center mx-auto w-4/5 mt-12 mb-3">
-                            <button type="submit" className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white">Add</button>
+                            <Button className="bg-[#F9D745] lg:bg-blue-550 w-full rounded-xl py-4 text-blue-550 lg:text-white" onClick={handleSubmit}>Add</Button>
                         </div>
                         <div className="flex justify-center mx-auto w-4/5 mt-6 mb-3">
-                            <Link to={`/books`}><Button className="bg-[#F9D745]  lg:hidden normal-case rounded-xl py-4 text-blue-550 ">Return</Button></Link>
+                            <Link to={`/students`}><Button className="bg-[#F9D745]  lg:hidden  rounded-xl py-4 text-blue-550 ">Return</Button></Link>
                         </div>
                         
                     </form>

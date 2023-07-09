@@ -8,8 +8,11 @@ const axiosInstance = axios.create({
 
 
  export const addStudent= async(Student, setMessage)=>{
+    console.log()
     try{
-        const response=await axiosInstance.post(BookLendingAppUrl + "/api/booklending/students",Student)
+        const response=await axiosInstance.post(BookLendingAppUrl + "/api/booklending/students",Student, {headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }})
         setMessage("Student Added Successfully")
     }
     catch(error){
@@ -20,7 +23,9 @@ const axiosInstance = axios.create({
 
 export const deleteStudent=async(rollNo)=>{
     try{
-        const response=await axiosInstance.delete(BookLendingAppUrl+`/api/booklending/students/RollNo/${rollNo}`)
+        const response=await axiosInstance.delete(BookLendingAppUrl+`/api/booklending/students/RollNo/${rollNo}`, {headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }})
     }
     catch(error){
         console.log(error);
@@ -30,7 +35,9 @@ export const deleteStudent=async(rollNo)=>{
 
 export const updateStudent=async(Student)=>{
     try{
-        const response = await axiosInstance.put(BookLendingAppUrl+"/api/booklending/students",Student);
+        const response = await axiosInstance.put(BookLendingAppUrl+"/api/booklending/students",Student, {headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }});
     }
     catch(error){
         console.log(error);
@@ -39,7 +46,9 @@ export const updateStudent=async(Student)=>{
 
 export const fetchStudents=async(setStudents)=>{
     try{
-        const response = await axiosInstance.get(BookLendingAppUrl+'/api/booklending/students')
+        const response = await axiosInstance.get(BookLendingAppUrl+'/api/booklending/students', {headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }})
         .then(response=>{
             setStudents(response.data);
         });
@@ -51,7 +60,9 @@ export const fetchStudents=async(setStudents)=>{
 
 export const fetchStudentDetails=async(setStudent,rollNo)=>{
     try{
-        const response=axiosInstance.get(BookLendingAppUrl + `/api/booklending/students/rollNo/${rollNo}`).then(res=>{
+        const response=axiosInstance.get(BookLendingAppUrl + `/api/booklending/students/rollNo/${rollNo}`,{headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }}).then(res=>{
             setStudent(res.data);
         })
         
@@ -63,7 +74,9 @@ export const fetchStudentDetails=async(setStudent,rollNo)=>{
 
 export const Login=async(Login)=>{
     try{
-        const response=await axiosInstance.post(BookLendingAppUrl+"/api/users/login",Login);
+        const response=await axiosInstance.post(BookLendingAppUrl+"/api/users/login",Login, {headers: {
+            'Authorization': "Bearer "+ localStorage.getItem("jwt")
+        }});
         localStorage.setItem("jwt", response.data)
         return response.status==200?true:false
     }
