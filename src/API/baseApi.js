@@ -38,7 +38,7 @@ export const addBook = async (Book, setMessage) => {
     }
     catch(error){
         console.log(error);
-        setMessage(error.message)
+        setMessage("Could not add book as a book with that code already exists/null fields in request.");
     }
 }
 

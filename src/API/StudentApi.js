@@ -16,7 +16,7 @@ const axiosInstance = axios.create({
     }
     catch(error){
         console.log(error);
-        setMessage(error.message)
+        setMessage("Could not add student as a student with that code already exists/null fields in request.")
     }
 }
 
