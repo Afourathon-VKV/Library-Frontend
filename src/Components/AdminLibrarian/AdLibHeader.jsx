@@ -14,6 +14,7 @@ export const AdLibHeader=()=>{
                 <div className="flex text-xl hover:cursor-pointer" onClick={async()=>{
                     await Logout();
                     navigate("/login");
+                    localStorage.removeItem("jwt");
                 }}>
                     Logout
                 </div>

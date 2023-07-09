@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom"
 import AdminLibrarian from "./Components/AdminLibrarian";
 import { AdLibDetails } from "./Components/AdminLibrarian/AdLibDetails";
-import Home from './Components/Home';
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import StudentPage from "./Components/StudentsPage";
@@ -11,9 +10,15 @@ import BookDetailsPage from "./Components/BookDetailsPage";
 import PagesOptions from "./Components/PagesOptions";
 import BooksPage from "./Components/BooksPage";
 import { AddBook } from "./Components/BooksPage/AddBook";
-
+import { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+
+  const navigate=useNavigate();
+  useEffect(()=>{
+    if(localStorage.getItem("jwt")) navigate("/dashboard")
+  },[])
   
   return (
       <div className="App">

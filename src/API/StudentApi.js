@@ -87,7 +87,6 @@ export const Login=async(Login)=>{
 export const Logout=async()=>{
     try{
         const response=await axiosInstance.post(BookLendingAppUrl+"/api/user/logout",null);
-        localStorage.removeItem("jwt");
     }
     catch(error){
         console.log(error);

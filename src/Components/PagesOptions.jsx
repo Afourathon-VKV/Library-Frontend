@@ -18,6 +18,7 @@ export default function PagesOptions() {
                 <div className="text-white text-xl p-8 hover:cursor-pointer" onClick={async()=>{
                     await Logout();
                     navigate("/login");
+                    localStorage.removeItem("jwt");
                 }}>
                     Logout 
                 </div>

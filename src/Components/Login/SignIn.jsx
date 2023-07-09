@@ -5,6 +5,7 @@ import { Link ,useNavigate} from "react-router-dom"
 import { Login } from "../../API/StudentApi";
 
 export const SignIn=()=>{
+
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
     const [erroremail, setErroremail]=useState("");
@@ -43,7 +44,7 @@ export const SignIn=()=>{
             if(p) navigate("/dashboard")
         }
 
-        
+       
     }
     return (
 
