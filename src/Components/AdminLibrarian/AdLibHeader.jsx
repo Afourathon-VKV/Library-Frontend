@@ -1,6 +1,6 @@
 import { Button } from "@material-tailwind/react"
-import { Link } from "react-router-dom"
-
+import { Link,useNavigate } from "react-router-dom"
+import { Logout } from "../../API/StudentApi"
 export const AdLibHeader=()=>{
     return (
         <div>
@@ -11,7 +11,10 @@ export const AdLibHeader=()=>{
                 <div className=" pr-[28%] xl:pr-[19%] 2xl:pr-[16%] hidden lg:flex">
                     <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
                 </div>
-                <div className="flex text-xl">
+                <div className="flex text-xl hover:cursor-pointer" onClick={async()=>{
+                    await Logout();
+                    navigate("/login");
+                }}>
                     Logout
                 </div>
             </div>

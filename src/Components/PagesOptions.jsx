@@ -1,5 +1,6 @@
 import React from 'react'
 import {useNavigate,Link} from "react-router-dom"
+import { Logout } from '../API/StudentApi';
 
 export default function PagesOptions() {
     const navigate = useNavigate();
@@ -14,8 +15,11 @@ export default function PagesOptions() {
                 <div className="text-white text-xl p-8">
                     <Link to={`/adminlibrarian`}> Librarians</Link>
                 </div>
-                <div className="text-white text-xl p-8">
-                    Logout
+                <div className="text-white text-xl p-8 hover:cursor-pointer" onClick={async()=>{
+                    await Logout();
+                    navigate("/login");
+                }}>
+                    Logout 
                 </div>
             </div>
 

@@ -8,7 +8,6 @@ const axiosInstance = axios.create({
 
 
  export const addStudent= async(Student, setMessage)=>{
-    console.log()
     try{
         const response=await axiosInstance.post(BookLendingAppUrl + "/api/booklending/students",Student, {headers: {
             'Authorization': "Bearer "+ localStorage.getItem("jwt")
@@ -82,5 +81,15 @@ export const Login=async(Login)=>{
     }
     catch(error){
         console.log(error)
+    }
+}
+
+export const Logout=async()=>{
+    try{
+        const response=await axiosInstance.post(BookLendingAppUrl+"/api/user/logout",null);
+        localStorage.removeItem("jwt");
+    }
+    catch(error){
+        console.log(error);
     }
 }
