@@ -52,7 +52,15 @@
   |/studentdetails/:id| StudentDetailsPage.jsx | Renders the page for the details of a student. (id <=> student rollNo) is called from the browser, it queries the backend using the student roll number and gets the details of the student and gets the books that have been borrowed by this student. The librarian can return any of the books borrowed by the givens student. Calls the components in /src/Components/StudentBooks | 
 
 
+### Deployment 
 
+- We used various AWS services to deploy the application. Firstly, we created an AWS Frontend cluster that contained a EC2 instances to run the docker image. A repository was created for this repo to store the images that are built by the CI/CD process using the ECR service. Then a task-definition was made which had information to run the image. In the cluster, we created a service which would make use of the task definition built and run the container on one of the EC2 instances.
+- We used the CI/CD infrasture that github provides to create a workflow file which contained instructions to deploy the application on aws.
+- Added the task-definition.json file that we got in the previous step to the root of the repo.
+- Configured the aws.yml file with cluster name, service name, region ,repository and the location of the task-definition file.
+- A Dockerfile was added ot the root of the repo. The Dockerfile contains commands to setup , test and build the image that will be run on the EC2 instance. The instance will run only if the command running tests passes.
+- Once deployed, the ip address of the app is visible on the task that is running the app.
+Push all the changes to github using git. Once pushed, github will take care of deploying to aws.
   
 
 
