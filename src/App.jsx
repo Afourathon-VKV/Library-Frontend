@@ -21,6 +21,8 @@ function App() {
         
           <Route path="*" element={<Navigate to={`/login`}/>} />
           <Route path="/login" element={<Login/>} />
+          
+
           {/* <Route path="/signup" element={<Signup/>} /> */}
 
           <Route path="/adminlibrarian" element={<AdminLibrarian/>} />
@@ -37,6 +39,7 @@ function App() {
 
 
           <Route path="/dashboard" element={<PagesOptions/>}/>
+          
         </Routes>
       </div>
   );

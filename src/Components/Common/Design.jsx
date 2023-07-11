@@ -1,4 +1,5 @@
-export const Design=()=>{
+export const Design = ()=>{
+    // Blue box component in login screen
     return (
         <div className="bg-blue-550 h-[93vh] rounded-2xl m-6 hidden nlg:block">
             <div className="flex">
@@ -6,7 +7,7 @@ export const Design=()=>{
                     Your Logo
                 </div>
                 <div className="text-white p-8">
-                 +94 0116 789 754
+                    +94 0116 789 754
                 </div>
             </div>
          
@@ -16,7 +17,6 @@ export const Design=()=>{
 
             <div className=" mx-16 2xl:mx-28 mt-[6%] xl:mt-[5%]">
                 <div className="text-white text-4xl xl:text-5xl font-semibold"> Sign in to Library</div>
-                {/* <div className="text-white text-lg xl:text-xl my-3"> Lorem Ipsum is simply </div> */}
             </div>
         </div>
     )

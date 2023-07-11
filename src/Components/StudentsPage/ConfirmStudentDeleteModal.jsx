@@ -7,6 +7,7 @@ export const ConfirmStudentDeleteModal = ({rollNo,openModal,setOpenModal}) => {
   
   const handleSubmit = async (e) => {
       e.preventDefault();
+      //  Deleting the student of the given code
       await deleteStudent(rollNo);
       setOpenModal(undefined);
       window.location.reload();

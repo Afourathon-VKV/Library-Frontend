@@ -11,10 +11,8 @@ export const StudentHeader = ({setSearchStudent}) => {
                    <Link to={`/dashboard`}> Your Logo</Link>
                 </div>
                 <div className=" pr-[28%] xl:pr-[19%] 2xl:pr-[16%] hidden lg:flex">
-                    <input onChange={(e)=> {
-                        console.log(e.target.value);
-                        setSearchStudent(e.target.value);
-                        }} type="text" placeholder="Search By Name" className="rounded-xl text-black text-sm"></input>
+                     {/* Allowing users to search according to student name */}
+                    <input onChange={(e)=> {setSearchStudent(e.target.value);}} type="text" placeholder="Search By Name" className="rounded-xl text-black text-sm"></input>
                 </div>
                 <div className="flex text-xl hover:cursor-pointer" onClick={async()=>{
                     await Logout();
@@ -25,6 +23,7 @@ export const StudentHeader = ({setSearchStudent}) => {
                 </div>
             </div>
 
+            {/* Button to open 'add student' modal for phone screens */}
             <div className="lg:hidden">
                 <img src="/images/Pic2.png" className="object-contain flex mx-auto my-4"></img>
                 <div className="mb-6 mt-10 flex">
@@ -34,6 +33,7 @@ export const StudentHeader = ({setSearchStudent}) => {
                         </Link>
                     </div>
                     <div className="flex">
+                        {/* Allowing users to search according to student name */}
                         <input onChange={(e)=> setSearchStudent(e.target.value)} type="text" placeholder="Search By Name" className="rounded-xl text-black text-sm w-[90%]"></input>
                     </div>
                 </div>

@@ -13,8 +13,9 @@ export const ConfirmBookDelete = ({id,openModal,setOpenModal}) => {
 
   return (
     <>
+      {/* Modal that asks user if they want to return */}
       <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)} size="sm"  >
-
+        {/* Close button */}
         <div className="flex items-start justify-between rounded-t dark:border-gray-600 p-5 bg-[#F9D745]">
             <div>
                 <button aria-label="Close" className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" type="button" onClick={() => setOpenModal(undefined)}>

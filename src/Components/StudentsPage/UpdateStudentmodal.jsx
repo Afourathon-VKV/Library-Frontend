@@ -6,11 +6,13 @@ import { useEffect } from 'react';
 import { updateStudent } from '../../API/StudentApi';
 export const UpdateStudentModal = ({details,openModal,setOpenModal}) => {
 
+    // State variables for the updated fields entered
     const [name,setName]=useState("");
     const [phone, setPhone]=useState("");
     const [rollNo,setRollNo]=useState("");
     const [email, setEmail]=useState("");
   
+    // State varaibles for the error in the updated fields entered
     const [erroremail, setErroremail]=useState("");
     const [errorphone, setErrorphone]=useState("");
     const [errorname, setErrorname]=useState("");
@@ -54,6 +56,7 @@ export const UpdateStudentModal = ({details,openModal,setOpenModal}) => {
 
         else if(erroremail=="" && errorphone=="" && errorname=="" )
         {
+            // Updating the student of the same roll No with the new fields
             await updateStudent({
                 rollNo: rollNo,
                 email: email,
@@ -69,6 +72,7 @@ export const UpdateStudentModal = ({details,openModal,setOpenModal}) => {
     <>
       <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)} size="md"  >
 
+        {/* Close Button */}
         <div className="flex items-start justify-between rounded-t dark:border-gray-600 p-5 bg-[#F9D745]">
             <div>
                 <button aria-label="Close" className="ml-auto inline-flex items-center rounded-lg bg-transparent p-1.5 text-sm text-gray-400 hover:bg-gray-200 hover:text-gray-900 dark:hover:bg-gray-600 dark:hover:text-white" type="button" onClick={() => setOpenModal(undefined)}>
@@ -86,6 +90,8 @@ export const UpdateStudentModal = ({details,openModal,setOpenModal}) => {
                 <div className="mt-6 text-black">
                     
                     <form>
+                        
+                        {/* New Fields */}
 
                         <div className=" w-4/5 mx-auto">
                             <div className="text-sm text-gray-600 ">Name</div>
@@ -110,6 +116,7 @@ export const UpdateStudentModal = ({details,openModal,setOpenModal}) => {
 
                         </div>
 
+                        {/* Student roll no cannot be updated */}
                         <div className="mt-4 w-4/5 mx-auto">
                             <div className="text-sm text-gray-600 ">Rollno</div>
                             <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter roll number" disabled defaultValue={rollNo}/>

@@ -3,7 +3,11 @@ import {useNavigate,Link} from "react-router-dom"
 import { Logout } from '../API/StudentApi';
 
 export default function PagesOptions() {
+    
+    // Page that allows librarians to view all students or all books
+    
     const navigate = useNavigate();
+    
     return (
         <div className='min-h-[100vh] bg-blue-550 pb-8'>
             

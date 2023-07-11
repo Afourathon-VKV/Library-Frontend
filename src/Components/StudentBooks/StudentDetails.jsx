@@ -1,4 +1,7 @@
 export const StudentDetails = ({name,email,phone,id,setSearchBook}) => {
+
+    // Component that displays details of the current student
+
     return (
         <div className="col-span-1 pt-8 lg:pt-16 lg:pr-8 bg-blue-550 lg:min-h-fit lg:bg-transparent">
                 
@@ -33,7 +36,8 @@ export const StudentDetails = ({name,email,phone,id,setSearchBook}) => {
                     </div>
                     
                 </div>
-
+                
+                {/* Allowing to search for a book among the books lent to the student */}
                 <div className="my-8 flex justify-center w-full pt-2 px-4 text-white lg:hidden">
                     <input onChange={(e)=>setSearchBook(e.target.value)} type="text" placeholder="Search By Book Title" className="rounded-xl text-black text-sm sm:w-4/5 w-full"></input>
                 </div>

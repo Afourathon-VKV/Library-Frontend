@@ -6,6 +6,9 @@ import { fetchBookDetails } from "../API/baseApi";
 import { useEffect,useState } from "react";
 
 export default function BookDetailsPage(){
+    
+    // Page for viewing details of a particular book
+
     const {id} = useParams();
     const [book, setBook] = useState({});
     
@@ -13,7 +16,7 @@ export default function BookDetailsPage(){
         async function getBookDetails(){
             await fetchBookDetails(setBook,id);
         }
-        getBookDetails();
+        getBookDetails(); // Fetching book details of the given book from the backend
     }, []);
 
     return (
@@ -23,12 +26,15 @@ export default function BookDetailsPage(){
 
             <div className="mt-4 grid lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-2">
                 
+                {/* Displaying the book details for screens of smaller size on the top */}
                 <div className="lg:hidden">
                     <BookDetails title={book.title} author={book.author} code={book.code} description={book.description}/>
                 </div>
 
+                {/* Component that displays the student that has borrowed the book */}
                 <BookStudentTable id={id}/>
 
+                {/* Displaying the book details for screens of larger size on the side */}
                 <div className="lg:block hidden">
                     <BookDetails title={book.title} author={book.author} code={book.code} description={book.description}/>
                 </div>

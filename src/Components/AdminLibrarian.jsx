@@ -3,6 +3,7 @@ import { AdLibTable } from "./AdminLibrarian/AdLibTable";
 import { Button } from "@material-tailwind/react";
 import { AdLibDetails } from "./AdminLibrarian/AdLibDetails";
 export default function AdminLibrarian(){
+    // Page for admins to view, add and delete librarians
     return (
         <div className="bg-blue-550 min-h-screen pb-6">
             <AdLibHeader/>

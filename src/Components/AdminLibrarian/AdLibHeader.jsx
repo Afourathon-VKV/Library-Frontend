@@ -2,6 +2,10 @@ import { Button } from "@material-tailwind/react"
 import { Link,useNavigate } from "react-router-dom"
 import { Logout } from "../../API/StudentApi"
 export const AdLibHeader=()=>{
+    
+    // Header to add the librarians page
+
+    const navigate = useNavigate();
     return (
         <div>
             <div className="flex pt-8 px-6 lg:px-12 text-white">

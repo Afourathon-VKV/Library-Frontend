@@ -1,15 +1,23 @@
 import { Button } from "@material-tailwind/react"
 import { useState } from "react"
 import { addLibrarian } from "../../API/TransactionApi";
+import { useNavigate } from "react-router-dom";
 export const AdLibDetails=()=>{
 
+    // State variables for the details of the librarian to add
     const [name, setName]=useState("");
     const [email, setEmail]=useState("");
     const [password, setPassword]=useState("");
+
+    // State variables for the errors in the details of the librarian to add
     const [erroremail, setErroremail]=useState("");
     const [errorpassword, setErrorpassword]=useState("");
     const [errorname, setErrorname]=useState("");
+    
+    // regex to verify if an email is valid
     var regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
+
+    // Verifying librarian details when one is changed
 
     const handleEmailChange=(e)=>{
         let text=e.target.value;
@@ -30,13 +38,14 @@ export const AdLibDetails=()=>{
 
     const handleSubmit=async(e)=>{
         e.preventDefault();
+        // Performing checks
         if(password=="" || email=="" || name==""){
             if(email=="") setErroremail("Required Field");
             if(password=="") setErrorpassword("Required Field");
             if(name=="") setErrorname("Required Field");
         }
         else if(erroremail=="" && errorpassword=="" && errorname==""){
-            //send request
+            // Sending add librarian request
             await addLibrarian({
                 "username": name,
                 "name": name,
@@ -48,26 +57,38 @@ export const AdLibDetails=()=>{
         
     }
 
+    const navigate = useNavigate();
+    
     return (
         <div className="col-span-1 pt-6 lg:pr-8 bg-blue-550 min-h-screen lg:min-h-fit lg:bg-transparent ">
-                <div className="flex pt-2 px-12 text-white lg:hidden">
-                    <div className="flex-auto font-bold text-xl">
-                        Your Logo
-                    </div>
-                    <div className=" pr-[20%] hidden lg:flex">
-                        <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
-                    </div>
-                    <div className="flex text-xl">
-                        Logout
-                    </div>
+            {/* Header */}
+            <div className="flex pt-2 px-12 text-white lg:hidden">
+                <div className="flex-auto font-bold text-xl">
+                    Your Logo
                 </div>
-                <div className="text-white font-bold text-2xl text-center pt-12">
+                <div className=" pr-[20%] hidden lg:flex">
+                    <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>
+                </div>
+                <div className="flex text-xl hover:cursor-pointer" onClick={async()=>{
+                    await Logout();
+                    navigate("/login");
+                    localStorage.removeItem("jwt");
+                }}>
+                    Logout
+                </div>
+            </div>
+                
+            <div className="text-white font-bold text-2xl text-center pt-12">
                 Add Librarian
-                </div>
-                <div className="lg:bg-[#F9D745] rounded-lg mt-3 py-3 ">
+            </div>
+                
+            {/* Component to add librarian */}
+            <div className="lg:bg-[#F9D745] rounded-lg mt-3 py-3 ">
+                
                 <div className="w-full ">
                     <img src="/images/Pic1.png" className="object-contain flex mx-auto"></img>
                 </div>
+                
                 <div className="mt-6 text-white lg:text-black">
                     <form>
 
@@ -98,7 +119,7 @@ export const AdLibDetails=()=>{
                     </form>
                 </div>
                     
-                </div>
             </div>
+        </div>
     )
 }

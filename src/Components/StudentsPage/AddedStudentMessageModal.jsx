@@ -10,6 +10,7 @@ export const AddedStudentMessageDialog = ({message,openModal,setOpenModal}) => {
       window.location.reload();
   }
 
+  // Modal to display error/success message after a student is added
   return (
     <>
       <Modal show={openModal === 'default'} onClose={() => setOpenModal(undefined)} size="sm"  >
@@ -21,14 +22,15 @@ export const AddedStudentMessageDialog = ({message,openModal,setOpenModal}) => {
                 </button>
             </div>
         </div>
-
+        
+        {/* Displaying a tick/cross depending on whether the addition was a success/failure */}
         <div className='bg-[#F9D745] flex items-center justify-center py-4'>
              <img className="h-[200px] w-[200px]" src={message[0] === "S" ? "/images/tick.png" : "images/cross.png"} ></img>
         </div>
 
         <div className='bg-[#F9D745]'>
             <div className="mt-6 text-black">
-                    
+                {/* Displaying the message */}
                 <div className=" w-4/5 mx-auto">
                     <div className="text-sm text-gray-600 text-center">{message}</div>
                 </div>
