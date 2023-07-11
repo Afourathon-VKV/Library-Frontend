@@ -89,6 +89,11 @@ export default function UpdateBookModal({details,openModal,setOpenModal}) {
                     
                     <form>
 
+                        <div className="mt-4 w-4/5 mx-auto">
+                            <div className="text-sm text-gray-600 ">Book Code</div>
+                            <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter roll number" disabled defaultValue={details?.code}/>
+                        </div>
+
                         <div className=" w-4/5 mx-auto">
                             <div className="text-sm text-gray-600 ">Title</div>
                             <input type="text" className="border-0 border-b-2  border-black text-[16px] mt-1  focus:ring-0 focus:border-black px-0 placeholder:text-blue-550  bg-transparent w-full" placeholder="Enter book title" defaultValue={title} onBlur={handleTitleChange}  />

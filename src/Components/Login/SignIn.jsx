@@ -35,7 +35,7 @@ export const SignIn=()=>{
         }
         else if(erroremail=="" && errorpassword==""){
             //send request
-            let p=await Login(
+            let p = await Login(
                 {
                     email: email,
                     password: password
@@ -60,13 +60,13 @@ export const SignIn=()=>{
             <div className="font-bold text-3xl">
                 Sign in
             </div>
-            <div className="mt-6">
-                If you don’t have an account register
+            {/* <div className="mt-6">
+                If you don't have an account register
             </div>
 
             <div className="mt-2">
                 You can <Link to={`/signup`} className="text-blue-250 font-extrabold">Register Here!</Link>
-            </div>
+            </div> */}
 
             <div className="mt-14 w-4/5">
                 <form>
@@ -82,7 +82,7 @@ export const SignIn=()=>{
                         <input type="password" className="border-0 border-b-2  border-black text-sm mt-1  focus:ring-0 px-0 placeholder:text-blue-550 focus:border-black w-full" placeholder="Enter your password" value={password} onChange={handlePasswordChange}/>
                         <div className="mt-1 text-red-600 text-sm">{errorpassword}</div>
                     </div>
-                    <div className="flex mt-4">
+                    {/* <div className="flex mt-4">
                         <div className="flex-auto">
                             <input type="checkbox"/>
                             <span className="mx-2 text-sm ">Remember me</span>
@@ -91,7 +91,7 @@ export const SignIn=()=>{
                         <div className="flex mt-[7px] text-sm text-gray-600">
                             Forgot Password?
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="flex justify-center mt-12">
                         <Button className="bg-blue-250 w-full rounded-xl py-4" onClick={handleSubmit}>Login</Button>
