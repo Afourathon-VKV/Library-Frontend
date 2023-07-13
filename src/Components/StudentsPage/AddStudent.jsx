@@ -46,8 +46,11 @@ export const AddStudent = () => {
     }
 
     const handleRollnoChange=(e)=>{
-        setRollno(e.target.value);
-        setErrorrollno("");
+        let text=e.target.value;
+        if(text.includes("/")) setErrorrollno("Rollno can't have '/'")
+        else setErrorrollno("");
+        setRollno(text);
+
     }
 
     const handleSubmit=async(e)=>{

@@ -38,8 +38,10 @@ export const AddBook = () => {
     }
 
     const handleRollnoChange=(e)=>{
+        let text=e.target.value;
+        if(text.includes("/")) setErrorrollno("Code can't have '/'")
+        else setErrorrollno("");
         setRollno(e.target.value);
-        setErrorrollno("");
     }
 
     const handleSubmit=async(e)=>{

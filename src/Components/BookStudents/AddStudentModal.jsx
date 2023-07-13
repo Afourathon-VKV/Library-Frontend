@@ -14,7 +14,8 @@ export const AddStudentModal=({bookCode})=> {
 
   const handleRollno = (e) => {
     inputRef.current = e.target.value
-    setError("");
+    if(inputRef.current.includes("/")) setError("Rollno can't have '/'")
+    else setError("");
   }
 
   const handleSubmit = async (e) => 

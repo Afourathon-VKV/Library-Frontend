@@ -13,7 +13,8 @@ export const AddBookModal=({rollNo})=> {
 
   const handleCode=(e)=>{
     inputRef.current=e.target.value;
-    setError("");
+    if(inputRef.current.includes("/")) setError("Rollno can't have '/'")
+    else setError("");
   }
   const handleSubmit=async(e) => 
   {
