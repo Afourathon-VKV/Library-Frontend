@@ -64,7 +64,7 @@ export const AdLibDetails=()=>{
             {/* Header */}
             <div className="flex pt-2 px-12 text-white lg:hidden">
                 <div className="flex-auto font-bold text-xl">
-                    Your Logo
+                    Book Lending Application
                 </div>
                 <div className=" pr-[20%] hidden lg:flex">
                     <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>

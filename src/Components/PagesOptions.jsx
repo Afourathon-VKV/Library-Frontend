@@ -14,7 +14,7 @@ export default function PagesOptions() {
             {/* Header */}
             <div className="flex mb-6">
                 <div className="hover:cursor-pointer flex-auto text-white font-bold text-xl p-8">
-                    <Link to={`/dashboard`}>Your Logo</Link>
+                    <Link to={`/dashboard`}>Book Lending Application</Link>
                 </div>
                 <div className="text-white text-xl p-8">
                     <Link to={`/adminlibrarian`}> Librarians</Link>

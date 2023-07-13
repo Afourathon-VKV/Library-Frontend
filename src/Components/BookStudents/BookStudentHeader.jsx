@@ -11,7 +11,7 @@ export const BookStudentHeader = () => {
         <div>
             <div className="flex pt-8 px-6 lg:px-12 text-white">
                 <div className="hover:cursor-pointer flex-auto font-bold text-xl">
-                    <Link to={`/dashboard`}> Your Logo</Link>
+                    <Link to={`/dashboard`}> Book Lending Application</Link>
                 </div>
 
                 <div className="flex text-xl hover:cursor-pointer" onClick={async()=>{

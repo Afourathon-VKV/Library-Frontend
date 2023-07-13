@@ -80,7 +80,7 @@ export const AddStudent = () => {
             {/* For phone screens, the add Student Modal opens in a separate screen */}
             <div className="flex pt-2 px-12 text-white lg:hidden">
                 <div className="hover:cursor-pointer flex-auto text-white font-bold text-xl ">
-                    <Link to={`/dashboard`}>Your Logo</Link>
+                    <Link to={`/dashboard`}>Book Lending Application</Link>
                 </div>
                 <div className=" pr-[20%] hidden lg:flex">
                     <input type="text" placeholder="Search" className="rounded-xl text-black text-sm"></input>

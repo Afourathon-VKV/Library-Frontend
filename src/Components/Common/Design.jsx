@@ -4,10 +4,10 @@ export const Design = ()=>{
         <div className="bg-blue-550 h-[93vh] rounded-2xl m-6 hidden nlg:block">
             <div className="flex">
                 <div className="flex-auto text-white font-bold text-xl p-8">
-                    Your Logo
+                    Book Lending Application
                 </div>
                 <div className="text-white p-8">
-                    +94 0116 789 754
+                    97016 82407
                 </div>
             </div>
          

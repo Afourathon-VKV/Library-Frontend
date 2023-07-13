@@ -5,7 +5,7 @@ export const Register=()=>{
     return (
         <div>
             <div className="nlg:hidden font-bold text-xl ml-[15%] mt-10">
-                Your Logo
+                Book Lending Application
             </div>
         <div className=" mt-10 nlg:mt-[11vh] ml-[15%]">
             <div className="font-bold text-3xl">
