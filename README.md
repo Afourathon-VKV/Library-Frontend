@@ -8,7 +8,8 @@
 - The frontend of the book lending application is written in vite-react. It uses several extenrnal javascript libraries such as:
     - Axios : Making REST API calls to our backend
     - TailwindCSS : Writing stronger and more effective inline CSS
-    - Flowbite-react : Using premade UI Components 
+    - Flowbite-react : Using premade UI Components
+- Link to Detailed Documentation : https://drive.google.com/drive/folders/1U6eiVa2SyMhqG_Kcy2lp0TuEF5pkZr9e?usp=drive_link 
 
 ### Frontend Flow
 
